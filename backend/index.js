@@ -2,11 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const path = require('path')
 const MenuRoutes = require('./routes/MenuRoutes');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname,'../frontend/build')))
+
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'))
+})
 
 app.use('/api', MenuRoutes);
 
