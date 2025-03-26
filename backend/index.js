@@ -11,11 +11,17 @@ app.use(express.json());
 
 app.use('/api', MenuRoutes);
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+const frontendPath = path.join(__dirname, '..', 'frontend', 'build');
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+} else {
+  console.error('⚠️ Frontend build not found!');
+}
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
