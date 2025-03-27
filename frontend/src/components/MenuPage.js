@@ -77,7 +77,7 @@ function MenuPage() {
   return (
     <div>
       <div
-        style={{ backgroundImage: "url('/images/banner/rectangle 107.png')" }}
+        style={{ backgroundImage: "url('/images/banner/Rectangle 107.png')" }}
         className="h-min-[79px] py-4 w-full bg-cover bg-center flex flex-wrap gap-1 justify-center items-center relative "
       >
         {menuLoading ? (
