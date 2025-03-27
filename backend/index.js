@@ -13,16 +13,20 @@ app.use(express.json());
 app.use('/api', MenuRoutes);
 
 const frontendPath = path.join(__dirname, '..', 'frontend', 'build');
+const imagesPath = path.join(__dirname, '..', 'frontend', 'public', 'images');
+
 
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath));
-
   app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
   });
 } else {
   console.error('⚠️ Frontend build not found!');
 }
+
+
+app.use('/images', express.static(imagesPath));
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
