@@ -21,6 +21,11 @@ function MenuPage() {
   }, []);
   useEffect(() => {
     if (selectedMenuId !== null) {
+      setCurrentPage(1);
+    }
+  }, [selectedMenuId]);
+  useEffect(() => {
+    if (selectedMenuId !== null) {
       fetchMenuItems(selectedMenuId, currentPage);
     }
   }, [selectedMenuId, currentPage, isAddMenuItemModalOpen]);
@@ -156,10 +161,10 @@ function MenuPage() {
               </span>
             </div>
             <div className="border-[1.5px] w-[50px] md:border-[3px] md:w-[68px] mt-6 rounded-md border-[#857878]"></div>{" "}
-            <div className="flex justify-end p-4">
+            <div className="flex justify-end  md:p-4">
               <button
                 onClick={() => setIsAddMenuItemModalOpen(true)}
-                className="font-oswald text-[10px] md:text-[16px]  md:font-[600] w-full h-[44px] px-2 md:w-[114.25px] md:h-[49.98px] border-[0.32px] border-secondary text-white uppercase mx-2 tracking-[3%] bg-black opacity-80"
+                className="font-oswald text-[10px] md:text-[16px]  md:font-[600] w-full h-[44px] md:px-2 md:w-[114.25px] md:h-[49.98px] border-[0.32px] border-secondary text-white uppercase mx-2 tracking-[3%] bg-black opacity-80"
               >
                 <div className="flex gap-2 items-center">
                   <Plus size={16} /> Add Menu Item
@@ -177,7 +182,7 @@ function MenuPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-4 md:mt-8">
             {menuItemLoading ? (
-              <div className="w-16 h-16 m-auto border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+              <div className="md:w-16 md:h-16 w-8 h-8 p-4 mb-4 m-auto border-4 border-t-transparent border-white rounded-full animate-spin"></div>
             ) : menuItems.length === 0 ? (
               <div className="text-white text-center font-oswald text-lg md:text-xl">
                 No menus items found
@@ -207,7 +212,7 @@ function MenuPage() {
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className={`px-4 py-2 text-white border ${
+              className={`px-2 py-1 md:px-4 md:py-2  text-white border font-kelly ${
                 currentPage === 1
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-secondary"
@@ -219,7 +224,7 @@ function MenuPage() {
             <button
               onClick={nextPage}
               disabled={currentPage >= Math.ceil(totalItems / itemsPerPage)}
-              className={`px-4 py-2 text-white border ${
+              className={`px-2 py-1 md:px-4 md:py-2  text-white border font-kelly ${
                 currentPage >= Math.ceil(totalItems / itemsPerPage)
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-secondary"
