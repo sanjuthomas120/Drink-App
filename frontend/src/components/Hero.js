@@ -3,7 +3,7 @@ import React from "react";
 function Hero(props) {
   return (
     <div
-      style={{ backgroundImage: "url('/images/banner/rectangle_103.png')" }}
+      style={{ backgroundImage: "url('/images/banner/Rectangle_103.png')" }}
       className="h-[311px] w-full bg-cover bg-center"
     >
       <div className="flex justify-center items-center h-full max-w-6xl mx-auto">
