@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "http://drink-app-w7lr.onrender.com/api", 
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-export default API
+export default AP
