@@ -7,7 +7,7 @@ const fs = require('fs');
 const MenuRoutes = require('./routes/MenuRoutes');
 
 const app = express();
-pp.use(cors({
+app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
