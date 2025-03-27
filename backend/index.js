@@ -22,7 +22,7 @@ if (fs.existsSync(frontendPath)) {
     res.sendFile(path.join(frontendPath, 'index.html'));
   });
 } else {
-  console.error('⚠️ Frontend build not found!');
+  console.error('Frontend build not found!');
 }
 
 
